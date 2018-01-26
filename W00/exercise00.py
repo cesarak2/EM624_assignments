@@ -1,4 +1,4 @@
-# Author:  ---
+# Author:  Cesar Krischer
 
 # Exercise 0
 # Sample progam
@@ -10,6 +10,8 @@
 #     must enter the word 'done" (without quotes) to signal
 #     that they want to end
 
+print "\n run by Cesar K."
+print
 while True:  
     first_num = raw_input("Enter first integer, or 'done' (no quote) to stop: ")
     if first_num == 'done':
