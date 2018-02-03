@@ -20,15 +20,18 @@ while True:
     #   verify if the amount to be converted is a number
     else:
         if amountUSDollars.isdigit() == True:
-            # print "%s dolars" % amountUSDollars
+            print '%s dollars' % amountUSDollars
         else:
             print "\n please enter an integer\n"
             continue
+            # prompt the user with the name of the currency to be converted from US Dollars
         currencyToBeConverted = raw_input("Please enter the name of the currency you want to convert US Dolars to \n"
                                           "(to be equivalent to 1 US dollar) \n")
+            # prompt the user with the exchange rate
         exchangeRate = raw_input("What is is the exchange rate?\n")
+            # verify if the exchange rate is a number. If not, go back to the beginning
         if exchangeRate.isdigit() == True:
-            print "1 Dollar equals %s %s" % (exchangeRate, currencyToBeConverted)  # delete this line when code is finished
+            print "1 Dollar equals %s x %s" % (exchangeRate, currencyToBeConverted)  # delete this line when code is finished
         else:
             print "\n please enter an integer\n"
             continue
