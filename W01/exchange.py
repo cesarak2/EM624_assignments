@@ -13,25 +13,24 @@
 
 while True:
     #  get the amount to be converted and allow the user to quit the program
-    AmountUSDollars = raw_input("How many US Dollars do you want to exchange?  (done = ends)")
-    if AmountUSDollars == 'done':
+    amountUSDollars = raw_input("How many US Dollars do you want to exchange?  (done = ends)\n")
+    if amountUSDollars == 'done':
         print 'Thank You'
         break
     #   verify if the amount to be converted is a number
     else:
-        if AmountUSDollars.isdigit() == False:
-            print "please enter an integer"
-            continue
+        if amountUSDollars.isdigit() == True:
+            # print "%s dolars" % amountUSDollars
         else:
-            print "%s dolars" % AmountUSDollars
-
-
-        # calculate and print sum
-        # use int() built-in fuction to convert raw input to integer
-
-        print "\nEXP The equivalent of %s degree Celsius is %s Fahrenheit\n" % (AmountUSDollars, AmountUSDollars)
-        # print '\nThe equivalent of ', celsius, 'degree Celsius is ', fahrenheit
-    else:
-    print "not a number"
-
-#print '\nThanks for using this tool!\n'
+            print "\n please enter an integer\n"
+            continue
+        currencyToBeConverted = raw_input("Please enter the name of the currency you want to convert US Dolars to \n"
+                                          "(to be equivalent to 1 US dollar) \n")
+        exchangeRate = raw_input("What is is the exchange rate?\n")
+        if exchangeRate.isdigit() == True:
+            print "1 Dollar equals %s %s" % (exchangeRate, currencyToBeConverted)  # delete this line when code is finished
+        else:
+            print "\n please enter an integer\n"
+            continue
+        newCurrencyAmount = float(exchangeRate) * float(amountUSDollars)
+        print "You can exchange %r U.S. dollars for %r %r" % (amountUSDollars, newCurrencyAmount, currencyToBeConverted)
