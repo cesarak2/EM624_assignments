@@ -24,7 +24,7 @@ while True:
         # calculate and print sum
         # use int() built-in fuction to convert raw input to integer
 
-        print "\nEXP The equivalent of %s degree Celsius is %s Fahrenheit\n" % (celsius, fahrenheit)
+        print "\nThe equivalent of %s degree Celsius is %s Fahrenheit\n" % (celsius, fahrenheit)
         # print '\nThe equivalent of ', celsius, 'degree Celsius is ', fahrenheit
 
 
