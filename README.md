@@ -1,0 +1,1 @@
+Exercises made in Python for the Stevens class EM-624 2018 Spring.
