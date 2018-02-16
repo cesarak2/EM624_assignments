@@ -13,7 +13,7 @@
 
 while True:
     # ask for the price that should be multiple of 5 cents
-    value = raw_input("\nEnter the price as cents, a multiple of five cents\n"
+    value = raw_input("\nEnter the price as cents and as multiple of five cents\n"
                       "or 'done' (without quotes) if you are finished:\n")
     # break the loop and exit the program if the user types "done"
     if value == "done":
@@ -29,4 +29,5 @@ while True:
     if money % 5 == 0:
         print "You entered %s cents" % money
     else:
+        print "Price is not a multiple of 5 cents"
         continue
