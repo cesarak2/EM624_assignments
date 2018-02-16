@@ -42,7 +42,7 @@ with open("marketingdata.txt", 'r') as marketingData:
         lineContent = marketingData.readline()
     # print how many lines the file has.
     print "\nThe file marketingdata.txt has %s lines\n" % nLinesTXTFile
-
+marketingData.close()
 
 
 # Part 2:
@@ -67,3 +67,4 @@ with open ("CitiBike.csv", 'r') as CitiBike:
         lineContentCSV = CitiBike.readline()
     # Print the final statement
     print "The file CitiBike.csv has %s lines, of which %s is/are from 1/15/2014" % (countLinesCSV, countLinesCSVDate)
+CitiBike.close()
