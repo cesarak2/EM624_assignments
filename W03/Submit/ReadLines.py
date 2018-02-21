@@ -68,3 +68,5 @@ with open ("CitiBike.csv", 'r') as CitiBike:
     # Print the final statement
     print "The file CitiBike.csv has %s lines, of which %s is/are from 1/15/2014" % (countLinesCSV, countLinesCSVDate)
 CitiBike.close()
+
+
