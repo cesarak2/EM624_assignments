@@ -11,32 +11,46 @@ def importFile(filepath):
     return open(filepath, 'r')
 
 
-def printDetailsMonth (listCiti):
+def storeFileInList(filetoberead):
+    # starts a list that will contain all values (each row being a list withing the list)
+    listFromFile = []
+    # read the first line
+    lineContentTXT = filetoberead.readline()
+    # loop to read all the lines
+    while lineContentTXT:
+        # remove the spaces with strip and remove the breaks with split
+        subList = lineContentTXT.strip().split()
+        # add the values to the list
+        listFromFile.append(subList)
+        # read the new line
+        lineContentTXT = filetoberead.readline()  # to exit the loop
+    # close the file
+    filetoberead.close()
+    # return the final list as a result of the function
+    return listFromFile
+
+
+def printDetailsMonth(listCiti):
     print "The following data is from"
     print
 
+
+
+
 # Importing the file .txt
 CitiBike = importFile("citi_bike.txt")
-
-# print CitiBike.read() # this line breaks the code. Why?
-
-
-lineContentTXT = CitiBike.readline()
-
-# def storeFileInList (listname, filetoberead)
-dataCitiBike = []
-while lineContentTXT:
-    subList = lineContentTXT.strip().split()
-    dataCitiBike.append(subList)
-    lineContentTXT = CitiBike.readline() # to exit the loop
-# CitiBike.close()
+# Transforming the filo into list
+dataCitiBikeList = storeFileInList(CitiBike)
 
 
 
-last = len(dataCitiBike)
-last = int(last)-1
-# print dataCitiBike
+last = len(dataCitiBikeList)
+last = int(last) - 1
+# print dataCitiBikeList
 print last
-print dataCitiBike[last][0]
+print dataCitiBikeList[last][0]
 # print "The file CitiBike.csv has %s lines, of which %s is/are from 1/15/2014" % (nLinesCSVFile, countLinesMatchDate)
+
+
+
 
