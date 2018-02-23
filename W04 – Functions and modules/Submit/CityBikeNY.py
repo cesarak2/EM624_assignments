@@ -74,22 +74,22 @@ print "First: ", dataCitiBikeList[0][0], "\t\t\tlast: ", dataCitiBikeList[last][
 #         print dataCitiBikeList[i][3]
 #     i += 1
 
+monthsYear = {"June": 06}
 
+def averageAttribute(chosenmonth, attribute):
+    i = 0
+    countValuesinMonth = 0
+    monthAttributeSum = 0
+    for line in dataCitiBikeList:
+        if dataCitiBikeList[i][0].startswith(chosenmonth):
+            monthAttributeSum += float(dataCitiBikeList[i][attribute])
+            countValuesinMonth += 1
+        i += 1
+    averageAttributeFunc = monthAttributeSum / countValuesinMonth
+    print "The average for the month %s month is %s" % (chosenmonth, averageAttributeFunc)
 
-
-i = 0
-countValuesinMonth = 0
-monthSumMileageTraveled = 0
-for line in dataCitiBikeList:
-    if dataCitiBikeList[i][0].startswith("6/"):
-        monthSumMileageTraveled += float(dataCitiBikeList[i][3])
-        countValuesinMonth += 1
-    i += 1
-averageMileageTraveled = monthSumMileageTraveled / countValuesinMonth
-print averageMileageTraveled
-
-
-
+averageAttribute("6", 3)
+averageAttribute("7", 3)
 
 
     # juneTraveledMiles = []
