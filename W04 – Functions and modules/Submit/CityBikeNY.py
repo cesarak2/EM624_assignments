@@ -68,24 +68,25 @@ print "First: ", dataCitiBikeList[0][0], "\t\t\tlast: ", dataCitiBikeList[last][
 #     i += 1
 
 
+# i = 0
+# for line in dataCitiBikeList:
+#     if dataCitiBikeList[i][0].startswith("6/"):
+#         print dataCitiBikeList[i][3]
+#     i += 1
+
+
+
+
 i = 0
+countValuesinMonth = 0
+monthSumMileageTraveled = 0
 for line in dataCitiBikeList:
     if dataCitiBikeList[i][0].startswith("6/"):
-        print dataCitiBikeList[i][3]
+        monthSumMileageTraveled += float(dataCitiBikeList[i][3])
+        countValuesinMonth += 1
     i += 1
-
-
-
-
-    i = 0
-    j = 0
-    monthSumMileageTraveled = 0
-    for line in dataCitiBikeList:
-        if dataCitiBikeList[i][0].startswith("6/"):
-            monthSumMileageTraveled += dataCitiBikeList[i][3]
-            j += 1
-        i += 1
-    averageMileageTraveled = monthSumMileageTraveled / j
+averageMileageTraveled = monthSumMileageTraveled / countValuesinMonth
+print averageMileageTraveled
 
 
 
