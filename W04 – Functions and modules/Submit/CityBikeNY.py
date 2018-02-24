@@ -6,7 +6,7 @@
 
 # JUNE AND JANUARY
 
-# CitiBike = open ("citi_bike.txt", 'r') # alternative for the function
+# CitiBikeTXT = open ("citi_bike.txt", 'r') # alternative for the function
 def importFile(filepath):
     return open(filepath, 'r')
 
@@ -30,78 +30,78 @@ def storeFileInList(filetoberead):
     return listFromFile
 
 
-def printDetailsMonth(listCiti):
-    pass
-    # print "The following data is from"
-
-
-def print_details(chosenmonth, attribute):
+def averageAttribute(chosenmonth, attribute):
     i = 0
     nValuesinMonth = 0
     monthAttributeSum = 0
-    for line in dataCitiBikeList:
-        if dataCitiBikeList[i][0].startswith(chosenmonth):
-            monthAttributeSum += float(dataCitiBikeList[i][attribute])
+    for line in dataCitiBikeTXTList:
+        if dataCitiBikeTXTList[i][0].startswith(chosenmonth):
+            monthAttributeSum += float(dataCitiBikeTXTList[i][attribute])
             nValuesinMonth += 1
         i += 1
     print_detailsFunc = monthAttributeSum / nValuesinMonth
-    print "\nThe average for the month %s is %s\n" % (chosenmonth, print_detailsFunc)
+    print print_detailsFunc
 
 
-
-# Importing the file .txt
-CitiBike = importFile("citi_bike.txt")
-# Transforming the filo into list
-dataCitiBikeList = storeFileInList(CitiBike)
-
-
-# # Count the number of lines
-# count = 0
-# for line in dataCitiBikeList:
-#     count +=1
-# print "number of lines of the file is: %d" % count
-
-
-
-last = len(dataCitiBikeList)
-last = int(last) - 1
-# print dataCitiBikeList
-print last
-print "First: ", dataCitiBikeList[0][0], "\t\t\tlast: ", dataCitiBikeList[last][0]
-# print "The file CitiBike.csv has %s lines, of which %s is/are from 1/15/2014" % (nLinesCSVFile, countLinesMatchDate)
-
-
-# Print all 1 columns from all lists
-# i = 0
-# for line in dataCitiBikeList:
-#     print dataCitiBikeList[i][0]
-#     i += 1
-
-
-# i = 0
-# for line in dataCitiBikeList:
-#     if dataCitiBikeList[i][0].startswith("6/"):
-#         print dataCitiBikeList[i][3]
-#     i += 1
-
+def sumAttribute(chosenmonth, attribute):
+    i = 0
+    nValuesinMonth = 0
+    monthAttributeSum = 0
+    for line in dataCitiBikeTXTList:
+        if dataCitiBikeTXTList[i][0].startswith(chosenmonth):
+            monthAttributeSum += float(dataCitiBikeTXTList[i][attribute])
+            nValuesinMonth += 1
+        i += 1
+    print monthAttributeSum
 
 
 def startEndPeriod(chosenmonth):
     i = 0
     datesUsed = []
-    for line in dataCitiBikeList:
-        if dataCitiBikeList[i][0].startswith(chosenmonth):
-            print "a"
-            # datesUsed.append(dataCitiBikeList[i][0])
+    for line in dataCitiBikeTXTList:
+        if dataCitiBikeTXTList[i][0].startswith(chosenmonth):
+            datesUsed.append(dataCitiBikeTXTList[i][0])
         i += 1
-    print datesUsed
+    finalDate = int(len(datesUsed)-1)
+    if finalDate == -1:
+        print "The requested month is not in the data"
+        quit()
+    else:
+        print "The following data is from %s to %s" % (datesUsed[0], datesUsed[finalDate])
 
-startEndPeriod(6)
 
 
 
-print_details("6", 3)
+# Importing the file .txt
+CitiBikeTXT = importFile("citi_bike.txt")
+# Transforming the file into list
+dataCitiBikeTXTList = storeFileInList(CitiBikeTXT)
 
+# Importing the file .csv
+CitiBikeCSV = importFile("citi_bike.csv")
+# Transforming the file into list
+dataCitiBikeCSVList = storeFileInList(CitiBikeCSV)
+
+
+
+
+def print_details(chosenmonth, attribute1, attributename1, attribute2, attributename2):
+    # print "\n"
+    print startEndPeriod(chosenmonth)
+    print "\nThe average for %s in that period (month %s) is:" % (attributename1, chosenmonth)
+    averageAttribute(chosenmonth, attribute1)
+    print "The sum for %s in that period is:" % attributename2
+    sumAttribute(chosenmonth, attribute2)
+
+
+print_details("6", 3, "Miles traveled", 7, "24-Hour Passes Purchased (5 pm - 5 pm)")
+# print_details("2", 3, "Miles traveled", 7, "24-Hour Passes Purchased (5 pm - 5 pm)")
+
+
+
+# startEndPeriod("6")
+# averageAttribute("6", 3)
+# sumAttribute("6", 3)
 
 
 
@@ -111,6 +111,10 @@ print_details("6", 3)
 # print float(monthsYear["June"]) + 7
 
     # juneTraveledMiles = []
-    # line = dataCitiBikeList
+    # line = dataCitiBikeTXTList
     # if line.startswith("6/"):
     #     print line
+
+
+
+# print "This is the end of the files processing."
