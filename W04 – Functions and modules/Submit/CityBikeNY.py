@@ -35,7 +35,17 @@ def printDetailsMonth(listCiti):
     # print "The following data is from"
 
 
-
+def print_details(chosenmonth, attribute):
+    i = 0
+    nValuesinMonth = 0
+    monthAttributeSum = 0
+    for line in dataCitiBikeList:
+        if dataCitiBikeList[i][0].startswith(chosenmonth):
+            monthAttributeSum += float(dataCitiBikeList[i][attribute])
+            nValuesinMonth += 1
+        i += 1
+    print_detailsFunc = monthAttributeSum / nValuesinMonth
+    print "\nThe average for the month %s is %s\n" % (chosenmonth, print_detailsFunc)
 
 
 
@@ -76,26 +86,27 @@ print "First: ", dataCitiBikeList[0][0], "\t\t\tlast: ", dataCitiBikeList[last][
 
 
 
-def averageAttribute(chosenmonth, attribute):
-    monthsYear = {"June": 6}
-    chosenmonth = (monthsYear["chosenmonth"]
+def startEndPeriod(chosenmonth):
     i = 0
-    countValuesinMonth = 0
-    monthAttributeSum = 0
+    datesUsed = []
     for line in dataCitiBikeList:
         if dataCitiBikeList[i][0].startswith(chosenmonth):
-            monthAttributeSum += float(dataCitiBikeList[i][attribute])
-            countValuesinMonth += 1
+            print "a"
+            # datesUsed.append(dataCitiBikeList[i][0])
         i += 1
-    averageAttributeFunc = monthAttributeSum / countValuesinMonth
-    print "The average for the month %s month is %s" % (chosenmonth, averageAttributeFunc)
+    print datesUsed
 
-# averageAttribute("6", 3)
-# month = int(monthsYear["June"])
-# print month
-averageAttribute("June", 3)
-# averageAttribute("7", 3)
+startEndPeriod(6)
 
+
+
+print_details("6", 3)
+
+
+
+
+# print_details("6", 7)
+# print_details("7", 7)
 
 # print float(monthsYear["June"]) + 7
 
