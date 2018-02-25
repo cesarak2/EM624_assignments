@@ -17,7 +17,6 @@ def storeFileInList(filetoberead, fileType):
     # read the first line
     lineContentTXT = filetoberead.readline()
     # loop to read all the lines
-    print fileType
     if fileType == "TXT":
         splitCharacter = " "
     else:
@@ -33,9 +32,6 @@ def storeFileInList(filetoberead, fileType):
     filetoberead.close()
     # return the final list as a result of the function
     return listFromFile
-
-
-
 
 
 def averageAttribute(chosenmonth, attribute, file):
@@ -75,16 +71,19 @@ def startEndPeriod(chosenmonth, file):
         print "The requested month is not in the data"
         quit()
     else:
-        print "The following data is from %s to %s" % (datesUsed[0], datesUsed[finalDate])
+        return "\tThe following data is from %s to %s" % (datesUsed[0], datesUsed[finalDate])
 
 
 def print_details(file, chosenmonth, attribute1, attributename1, attribute2, attributename2):
-    # print "\n"
+    print ""
     print startEndPeriod(chosenmonth, file)
-    print "\nThe average for %s in that period (month %s) is:" % (attributename1, chosenmonth)
+    print "\nThe average for '%s' in that period (month %s) is:" % (attributename1, chosenmonth)
     averageAttribute(chosenmonth, attribute1, file)
-    print "The sum for %s in that period is:" % attributename2
+    print "The sum for '%s' in that period is:" % attributename2
     sumAttribute(chosenmonth, attribute2, file)
+    print ""
+
+# def showthetopdays()
 
 
 
@@ -99,31 +98,22 @@ CitiBikeCSV = importFile("citi_bike.csv")
 dataCitiBikeCSVList = storeFileInList(CitiBikeCSV, "CSV")
 
 
-
-
-
 print_details(dataCitiBikeTXTList, "6", 3, "Miles traveled", 7, "24-Hour Passes Purchased (5 pm - 5 pm)")
 print_details(dataCitiBikeCSVList, "1", 3, "Miles traveled", 7, "24-Hour Passes Purchased (5 pm - 5 pm)")
-# print_details("2", 3, "Miles traveled", 7, "24-Hour Passes Purchased (5 pm - 5 pm)")
 
 
+# listOrdered = dataCitiBikeTXTList[:]
+# sorted(listOrdered, 2)
+# for i in dataCitiBikeTXTList:
+#     listOrdered.append()
 
-# startEndPeriod("6")
-# averageAttribute("6", 3)
-# sumAttribute("6", 3)
-
-
-
-# print_details("6", 7)
-# print_details("7", 7)
-
-# print float(monthsYear["June"]) + 7
-
-    # juneTraveledMiles = []
-    # line = dataCitiBikeTXTList
-    # if line.startswith("6/"):
-    #     print line
+a = sorted(dataCitiBikeTXTList, reverse=True, key=lambda attribute: attribute[2])
+print a[0][0], a[0][2]
+print a[1][0], a[1][2]
+print a[2][0], a[2][2]
+print a[3][0], a[3][2]
+print a[4][0], a[4][2]
 
 
-
-# print "This is the end of the files processing."
+# Finishing the program
+print "\tThis is the end of the files processing."
