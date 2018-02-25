@@ -113,21 +113,44 @@ print_details(dataCitiBikeCSVList, "1", 3, "Miles traveled", 7, "24-Hour Passes 
 def biggestvaluesdays(file, month, ndays, attribute):
     # creates a new list equals to the original file to avoid aliasing
     orderedList = file[:]
-    orderedList = sorted(orderedList, reverse=True, key=lambda z: z[attribute])
+    orderedList = sorted(orderedList, reverse=True, key=lambda z: float(z[attribute]))
     i = 0
-    while i <= ndays:
-        if orderedList[i][0].startswith(month):
+    j = 0
+    while i <= len(orderedList)-1:
+        if orderedList[i][0].startswith(month) and j < ndays:
             print orderedList[i][0], orderedList[i][attribute]
-            i += 1
+            j += 1
+        i += 1
+    print i, j
 
-biggestvaluesdays(dataCitiBikeTXTList, "6", 5, 2)
 
-# a = sorted(dataCitiBikeTXTList, reverse=True, key=lambda attribute: attribute[2])
-# print a[0][0], a[0][2]
-# print a[1][0], a[1][2]
-# print a[2][0], a[2][2]
-# print a[3][0], a[3][2]
-# print a[4][0], a[4][2]
+# def biggestvaluesdays(file, month, attribute):
+#     dictAttribute = {}
+#     i = 0
+#     while i <= len(file)-1:
+#         if file[i][0].startswith(month):
+#             # print file[i][0], file[i][attribute]
+#             dictAttribute[file[i][0]] = float(file[i][attribute])
+#         i += 1
+#     # print dictAttribute
+#     if not dictAttribute == {}:
+#         for key, value in sorted(dictAttribute.iteritems(), reverse=True, key=lambda (k, v): (v, k)): #https://www.saltycrane.com/blog/2007/09/how-to-sort-python-dictionary-by-keys/
+#             print "%s: %s" % (key, value)
+#     else:
+#         print "No values found for this month"
+
+biggestvaluesdays(dataCitiBikeTXTList, "6", 5, 3)
+# biggestvaluesdays(dataCitiBikeTXTList, "6", 1)
+
+# a = sorted(dataCitiBikeTXTList, reverse=True, key=lambda attribute: attribute[0])
+# print "\nmanual values"
+# print max.a[0]
+# print a[0][0], a[0][1]
+# print a[1][0], a[1][1]
+# print a[2][0], a[2][1]
+# print a[3][0], a[3][1]
+# print a[4][0], a[4][1]
+# print a
 
 
 # a = 10
