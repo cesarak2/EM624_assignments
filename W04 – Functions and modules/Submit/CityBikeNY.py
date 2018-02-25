@@ -97,7 +97,7 @@ CitiBikeCSV = importFile("citi_bike.csv")
 # Transforming the file into list
 dataCitiBikeCSVList = storeFileInList(CitiBikeCSV, "CSV")
 
-
+# def print_details(file, chosenmonth, attribute1, attributename1, attribute2, attributename2):
 print_details(dataCitiBikeTXTList, "6", 3, "Miles traveled", 7, "24-Hour Passes Purchased (5 pm - 5 pm)")
 print_details(dataCitiBikeCSVList, "1", 3, "Miles traveled", 7, "24-Hour Passes Purchased (5 pm - 5 pm)")
 
@@ -107,12 +107,32 @@ print_details(dataCitiBikeCSVList, "1", 3, "Miles traveled", 7, "24-Hour Passes 
 # for i in dataCitiBikeTXTList:
 #     listOrdered.append()
 
-a = sorted(dataCitiBikeTXTList, reverse=True, key=lambda attribute: attribute[2])
-print a[0][0], a[0][2]
-print a[1][0], a[1][2]
-print a[2][0], a[2][2]
-print a[3][0], a[3][2]
-print a[4][0], a[4][2]
+
+# if file[i][0].startswith(chosenmonth):
+
+def biggestvaluesdays(file, month, ndays, attribute):
+    # creates a new list equals to the original file to avoid aliasing
+    orderedList = file[:]
+    orderedList = sorted(orderedList, reverse=True, key=lambda z: z[attribute])
+    i = 0
+    while i <= ndays:
+        if orderedList[i][0].startswith(month):
+            print orderedList[i][0], orderedList[i][attribute]
+            i += 1
+
+biggestvaluesdays(dataCitiBikeTXTList, "6", 5, 2)
+
+# a = sorted(dataCitiBikeTXTList, reverse=True, key=lambda attribute: attribute[2])
+# print a[0][0], a[0][2]
+# print a[1][0], a[1][2]
+# print a[2][0], a[2][2]
+# print a[3][0], a[3][2]
+# print a[4][0], a[4][2]
+
+
+# a = 10
+# for i in range(a):
+#     print i
 
 
 # Finishing the program
