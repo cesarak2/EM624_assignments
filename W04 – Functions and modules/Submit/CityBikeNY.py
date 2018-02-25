@@ -11,15 +11,20 @@ def importFile(filepath):
     return open(filepath, 'r')
 
 
-def storeFileInList(filetoberead):
+def storeFileInList(filetoberead, fileType):
     # starts a list that will contain all values (each row being a list withing the list)
     listFromFile = []
     # read the first line
     lineContentTXT = filetoberead.readline()
     # loop to read all the lines
+    print fileType
+    if fileType == "TXT":
+        splitCharacter = " "
+    else:
+        splitCharacter = ","
     while lineContentTXT:
         # remove the spaces with strip and remove the breaks with split
-        subList = lineContentTXT.strip().split()
+        subList = lineContentTXT.strip().split(splitCharacter)
         # add the values to the list
         listFromFile.append(subList)
         # read the new line
@@ -73,21 +78,6 @@ def startEndPeriod(chosenmonth, file):
         print "The following data is from %s to %s" % (datesUsed[0], datesUsed[finalDate])
 
 
-
-
-# Importing the file .txt
-CitiBikeTXT = importFile("citi_bike.txt")
-# Transforming the file into list
-dataCitiBikeTXTList = storeFileInList(CitiBikeTXT)
-
-# Importing the file .csv
-CitiBikeCSV = importFile("citi_bike.csv")
-# Transforming the file into list
-dataCitiBikeCSVList = storeFileInList(CitiBikeCSV)
-
-
-
-
 def print_details(file, chosenmonth, attribute1, attributename1, attribute2, attributename2):
     # print "\n"
     print startEndPeriod(chosenmonth, file)
@@ -97,7 +87,22 @@ def print_details(file, chosenmonth, attribute1, attributename1, attribute2, att
     sumAttribute(chosenmonth, attribute2, file)
 
 
-# print_details(dataCitiBikeTXTList, "6", 3, "Miles traveled", 7, "24-Hour Passes Purchased (5 pm - 5 pm)")
+
+# Importing the file .txt
+CitiBikeTXT = importFile("citi_bike.txt")
+# Transforming the file into list
+dataCitiBikeTXTList = storeFileInList(CitiBikeTXT, "TXT")
+
+# Importing the file .csv
+CitiBikeCSV = importFile("citi_bike.csv")
+# Transforming the file into list
+dataCitiBikeCSVList = storeFileInList(CitiBikeCSV, "CSV")
+
+
+
+
+
+print_details(dataCitiBikeTXTList, "6", 3, "Miles traveled", 7, "24-Hour Passes Purchased (5 pm - 5 pm)")
 print_details(dataCitiBikeCSVList, "1", 3, "Miles traveled", 7, "24-Hour Passes Purchased (5 pm - 5 pm)")
 # print_details("2", 3, "Miles traveled", 7, "24-Hour Passes Purchased (5 pm - 5 pm)")
 
