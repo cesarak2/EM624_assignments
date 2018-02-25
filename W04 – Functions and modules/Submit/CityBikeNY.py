@@ -30,37 +30,40 @@ def storeFileInList(filetoberead):
     return listFromFile
 
 
-def averageAttribute(chosenmonth, attribute):
+
+
+
+def averageAttribute(chosenmonth, attribute, file):
     i = 0
     nValuesinMonth = 0
     monthAttributeSum = 0
-    for line in dataCitiBikeTXTList:
-        if dataCitiBikeTXTList[i][0].startswith(chosenmonth):
-            monthAttributeSum += float(dataCitiBikeTXTList[i][attribute])
+    for line in file:
+        if file[i][0].startswith(chosenmonth):
+            monthAttributeSum += float(file[i][attribute])
             nValuesinMonth += 1
         i += 1
     print_detailsFunc = monthAttributeSum / nValuesinMonth
     print print_detailsFunc
 
 
-def sumAttribute(chosenmonth, attribute):
+def sumAttribute(chosenmonth, attribute, file):
     i = 0
     nValuesinMonth = 0
     monthAttributeSum = 0
-    for line in dataCitiBikeTXTList:
-        if dataCitiBikeTXTList[i][0].startswith(chosenmonth):
-            monthAttributeSum += float(dataCitiBikeTXTList[i][attribute])
+    for line in file:
+        if file[i][0].startswith(chosenmonth):
+            monthAttributeSum += float(file[i][attribute])
             nValuesinMonth += 1
         i += 1
     print monthAttributeSum
 
 
-def startEndPeriod(chosenmonth):
+def startEndPeriod(chosenmonth, file):
     i = 0
     datesUsed = []
-    for line in dataCitiBikeTXTList:
-        if dataCitiBikeTXTList[i][0].startswith(chosenmonth):
-            datesUsed.append(dataCitiBikeTXTList[i][0])
+    for line in file:
+        if file[i][0].startswith(chosenmonth):
+            datesUsed.append(file[i][0])
         i += 1
     finalDate = int(len(datesUsed)-1)
     if finalDate == -1:
@@ -85,16 +88,17 @@ dataCitiBikeCSVList = storeFileInList(CitiBikeCSV)
 
 
 
-def print_details(chosenmonth, attribute1, attributename1, attribute2, attributename2):
+def print_details(file, chosenmonth, attribute1, attributename1, attribute2, attributename2):
     # print "\n"
-    print startEndPeriod(chosenmonth)
+    print startEndPeriod(chosenmonth, file)
     print "\nThe average for %s in that period (month %s) is:" % (attributename1, chosenmonth)
-    averageAttribute(chosenmonth, attribute1)
+    averageAttribute(chosenmonth, attribute1, file)
     print "The sum for %s in that period is:" % attributename2
-    sumAttribute(chosenmonth, attribute2)
+    sumAttribute(chosenmonth, attribute2, file)
 
 
-print_details("6", 3, "Miles traveled", 7, "24-Hour Passes Purchased (5 pm - 5 pm)")
+# print_details(dataCitiBikeTXTList, "6", 3, "Miles traveled", 7, "24-Hour Passes Purchased (5 pm - 5 pm)")
+print_details(dataCitiBikeCSVList, "1", 3, "Miles traveled", 7, "24-Hour Passes Purchased (5 pm - 5 pm)")
 # print_details("2", 3, "Miles traveled", 7, "24-Hour Passes Purchased (5 pm - 5 pm)")
 
 
