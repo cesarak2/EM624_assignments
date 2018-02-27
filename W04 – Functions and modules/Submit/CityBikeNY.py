@@ -12,7 +12,9 @@
 #     startEndPeriod: check the first and last day of that month
 #     print_details: it uses the other functions to return the information of interest.
 #     biggestvaluesdays
-
+# import os
+# print os.getcwd()
+# print "\n"
 
 def storeFileInList(filetoberead, fileType):
     # starts a list that will contain all values (each row being a list withing the list)
@@ -105,7 +107,7 @@ def biggestvaluesdays(file, chosenmonth, ndays, attribute):
     # creates a new list equals to the original file to avoid aliasing
     orderedList = file[:]
     # orders the list
-    orderedList = sorted(orderedList, reverse=True, key=lambda z: float(z[attribute]))
+    orderedList = sorted(orderedList, reverse=True, key=lambda z: float(z[attribute])) # https://wiki.python.org/moin/HowTo/Sorting
     # set the counters (i for lines in the file, j for how many days to print
     i = 0
     j = 0
@@ -118,7 +120,8 @@ def biggestvaluesdays(file, chosenmonth, ndays, attribute):
             j += 1
         i += 1
 
-
+# import os
+# wd = os.getcwd()
 # Importing the file .txt and .csv
 CitiBikeTXT = open ("citi_bike.txt", 'r') # alternative for the function
 CitiBikeCSV = open ("citi_bike.csv", 'r') # alternative for the function
